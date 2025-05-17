@@ -21,6 +21,15 @@
         margin-bottom: 0.5em;
         text-align: center; /* center align */
         }
+.strike-marker {
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
 
         #intro-container {
             padding: 60px 10vw 40px 10vw;
@@ -469,6 +478,28 @@
     story.appendChild(footer);
 }
 
+        var strikeMarker = null;
+
+function addStrikeMarker(lngLat) {
+    // Remove existing marker if it exists
+    if (strikeMarker) {
+        strikeMarker.remove();
+    }
+
+    // Create strike marker element
+    var el = document.createElement('div');
+    el.className = 'strike-marker';
+    el.style.backgroundImage = 'url(./assets/strike.png)'; // <-- Your uploaded ripple image path
+    el.style.width = '60px';
+    el.style.height = '60px';
+    el.style.backgroundSize = 'contain';
+    el.style.backgroundRepeat = 'no-repeat';
+
+    strikeMarker = new mapboxgl.Marker(el)
+        .setLngLat(lngLat)
+        .addTo(map);
+}
+
         if (footer.innerText.length > 0) {
             footer.classList.add(config.theme);
             footer.setAttribute('id', 'footer');
@@ -541,6 +572,8 @@
 
                     if (config.showMarkers) {
                         marker.setLngLat(chapter.location.center);
+                        addStrikeMarker(chapter.location.center);
+
                     }
                     if (chapter.onChapterEnter.length > 0) {
                         chapter.onChapterEnter.forEach(setLayerOpacity);
