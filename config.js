@@ -2,8 +2,8 @@ var config = {
     style: 'mapbox://styles/mapbox/satellite-v9',
     // leave commented to use Mapbox Standard Style
     accessToken: 'pk.eyJ1Ijoic29tbXVsIiwiYSI6ImNtNGtmbW1qbzBkZXMycG83MDUzcDVtd2cifQ.-WOU0aPcC86u7ZUNdMsRlA',
-    showMarkers: true,
-    markerColor: '#FF0000',
+   showMarkers: true,
+    markerColor: '#3FB1CE',
     // projection: 'equirectangular',
     //Read more about available projections here
     // https://docs.mapbox.com/mapbox-gl-js/example/projections/
