@@ -463,11 +463,11 @@
 
         var footer = document.createElement('div');
 
-        if (config.footer) {
-            var footerText = document.createElement('p');
-            footerText.innerHTML = config.footer;
-            footer.appendChild(footerText);
-        }
+ if (config.footer) {
+    footer.classList.add(config.theme);
+    footer.setAttribute('id', 'footer');
+    story.appendChild(footer);
+}
 
         if (footer.innerText.length > 0) {
             footer.classList.add(config.theme);
